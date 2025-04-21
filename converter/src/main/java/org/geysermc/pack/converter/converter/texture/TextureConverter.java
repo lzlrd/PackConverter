@@ -124,8 +124,14 @@ public class TextureConverter implements Converter<TextureConversionData> {
 
             byte[] bytes = texture.data().toByteArray();
 
-            BufferedImage image = ImageIO.read(new ByteArrayInputStream(bytes));
-            BufferedImage newImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            try {
+                BufferedImage image = ImageIO.read(new ByteArrayInputStream(bytes));
+                BufferedImage newImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            } catch (NullPointerException e) {
+                System.err.println("Context: texturePath = " + texturePath);
+                System.err.println("Context: outputPath = " + outputPath);
+                System.err.println("Context: relativePath = " + relativePath);
+            }
 
             Graphics2D g = newImage.createGraphics();
             g.setComposite(AlphaComposite.Src);
