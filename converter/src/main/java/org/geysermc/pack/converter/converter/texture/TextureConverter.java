@@ -127,8 +127,8 @@ public class TextureConverter implements Converter<TextureConversionData> {
             BufferedImage image = null;
             BufferedImage newImage = null;
             try {
-                BufferedImage image = ImageIO.read(new ByteArrayInputStream(bytes));
-                BufferedImage newImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+                image = ImageIO.read(new ByteArrayInputStream(bytes));
+                newImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
             } catch (NullPointerException e) {
                 System.err.println("Context: texturePath = " + texturePath);
                 System.err.println("Context: outputPath = " + outputPath);
