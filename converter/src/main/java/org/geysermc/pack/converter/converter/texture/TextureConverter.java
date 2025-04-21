@@ -124,6 +124,8 @@ public class TextureConverter implements Converter<TextureConversionData> {
 
             byte[] bytes = texture.data().toByteArray();
 
+            BufferedImage image = null;
+            BufferedImage newImage = null;
             try {
                 BufferedImage image = ImageIO.read(new ByteArrayInputStream(bytes));
                 BufferedImage newImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
